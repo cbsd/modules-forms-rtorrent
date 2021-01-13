@@ -1,9 +1,19 @@
+classes:
+  - loginconf
+  - nginx
+  - php
+  - rtorrent
+
+php::globals:
+  php_version: 8.0
+
 php::ensure: installed
 php::manage_repos: true
+php::package_prefix: php80-
 php::fpm: true
 php::dev: true
 php::composer: true
-php::pear: true
+php::pear: false
 php::phpunit: false
 php::fpm::config::log_level: error
 php::composer::auto_update: true
@@ -38,18 +48,15 @@ php::fpm::pools:
     chdir: /
 
 php::extensions:
-  json: {}
+#  json: {}
+  opcache: {}
   curl: {}
-  json: {}
-  mcrypt: {}
   gettext: {}
   session: {}
   openssl: {}
   zip: {}
-  hash: {}
   iconv: {}
   zlib: {}
-  hash: {}
 
 nginx::events_use: kqueue
 nginx::confd_purge: true
@@ -85,23 +92,24 @@ nginx::server_names_hash_bucket_size:  512
 nginx::types_hash_max_size: 2048
 
 nginx::nginx_upstreams:
- 'phpfpm':
-   ensure: present
-   members:
-     - unix:/tmp/php-fpm.sock
+  'phpfpm':
+    ensure: present
+    members:
+      'phpsock':
+        server: unix:/tmp/php-fpm.sock
 
 nginx::nginx_servers:
- 'rtorrent':
-   server_name:
-     - rtorrent.convectix.com
-   ipv6_enable: true
-   ipv6_listen_options: ''
-   ssl_redirect: false
-   ssl: false
-   use_default_location: false
-   www_root: '/usr/home/web/rutorrent'
-   index_files:
-     - index.php
+  'rtorrent':
+    server_name:
+      - _
+    ipv6_enable: false
+    ipv6_listen_options: ''
+    ssl_redirect: false
+    ssl: false
+    use_default_location: false
+    www_root: '/usr/home/web/rutorrent'
+    index_files:
+      - index.php
 
 nginx::nginx_locations:
   'RPC2':

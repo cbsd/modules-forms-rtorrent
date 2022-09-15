@@ -47,9 +47,9 @@ EOF
 # long description
 ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
-UPDATE system SET longdesc='\
-Rtorrent is a BitTorrent Client written in C++ for *nix.
-WEB UI via rutorrent project
+UPDATE system SET longdesc='\\
+Rtorrent is a BitTorrent Client written in C++ for *nix. \\
++ WEB UI via rutorrent project \\
 ';
 COMMIT;
 EOF

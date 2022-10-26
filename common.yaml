@@ -48,12 +48,10 @@ php::fpm::pools:
     chdir: /
 
 php::extensions:
-#  json: {}
   opcache: {}
   curl: {}
   gettext: {}
   session: {}
-  openssl: {}
   zip: {}
   iconv: {}
   zlib: {}

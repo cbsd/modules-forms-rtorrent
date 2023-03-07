@@ -34,13 +34,13 @@ FORM_PATH="${workdir}/formfile"
 
 ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
-INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,0,"-","rtorrent params:",'-','','',1, "maxlen=128", "delimer", "", "" );
+INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( 'forms', 1,0,'-','rtorrent params:','-','','',1, 'maxlen=128', 'delimer', '', '' );
 COMMIT;
 EOF
 
 ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
-INSERT INTO system ( helpername, version, packages, have_restart ) VALUES ( "rtorrent", "201607", "", "" );
+INSERT INTO system ( helpername, version, packages, have_restart ) VALUES ( 'rtorrent', '201607', '', '' );
 COMMIT;
 EOF
 

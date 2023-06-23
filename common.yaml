@@ -105,7 +105,7 @@ nginx::nginx_servers:
     ssl_redirect: false
     ssl: false
     use_default_location: false
-    www_root: '/usr/home/web/rutorrent'
+    www_root: '/home/web/rutorrent'
     index_files:
       - index.php
 
@@ -129,7 +129,7 @@ nginx::nginx_locations:
     location: '~ \.php$'
     priority: 403
     server: rtorrent
-    www_root: /usr/home/web/rutorrent
+    www_root: /home/web/rutorrent
     fastcgi: unix:/tmp/php-fpm.sock
   'root':
     location: '/'

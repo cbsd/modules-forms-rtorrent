@@ -5,11 +5,11 @@ classes:
   - rtorrent
 
 php::globals:
-  php_version: 8.0
+  php_version: 8.1
 
 php::ensure: installed
 php::manage_repos: true
-php::package_prefix: php80-
+php::package_prefix: php81-
 php::fpm: true
 php::dev: true
 php::composer: true
